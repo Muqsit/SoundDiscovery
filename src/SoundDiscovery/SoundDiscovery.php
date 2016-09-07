@@ -9,16 +9,10 @@ class SoundDiscovery extends PluginBase implements Listener{
   public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
     if($cmd->getName() === "sound"){
       if(!isset($args[0])){
-        $sender->sendMessage("Playing strange sound. #hax");
+        $sender->sendMessage("Playing strange sound.");
+	$this->getServer()->getScheduler()->scheduleRepeatingTask(new SoundTask($this, $sender), 20);
         return;
       }
+    }
   }
-}
-
-class StrangeSound extends \pocketmine\level\sound\GenericSound;
-
-	public function __construct(Vector3 $pos, $pitch = 0){
-		parent::__construct($pos, 1060, $pitch);
-	}
-
 }
