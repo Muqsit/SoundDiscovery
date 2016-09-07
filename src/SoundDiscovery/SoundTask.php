@@ -2,7 +2,8 @@
 namespace SoundDiscovery;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\Player;
-
+use pocketmine\math\Vector3;
+use pocketmine\Player;
 class SoundTask extends PluginTask{
 
 	public function __construct(SoundDiscovery $plugin, Player $player){
