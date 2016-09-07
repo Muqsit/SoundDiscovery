@@ -3,21 +3,22 @@ namespace SoundDiscovery;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\command\{Command, CommandSender};
+use pocketmine\math\Vector3;
 class SoundDiscovery extends PluginBase implements Listener{
 
   public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
     if($cmd->getName() === "sound"){
       if(!isset($args[0])){
-        $sender->sendMessage("Usage: /sound <sound-id>");
+        $sender->sendMessage("Playing strange sound. #hax");
         return;
       }
-      if(isset($args[0])){
-        if(is_numeric($args[0])){
-          $this->getServer()->scheduleRepeatingTask(new SoundTask($this,$sender));
-        }else{
-          $sender->sendMessage("Error: sound-id must be numeric!");
-        }
-      }
-    }
   }
+}
+
+class StrangeSound extends \pocketmine\level\sound\GenericSound;
+
+	public function __construct(Vector3 $pos, $pitch = 0){
+		parent::__construct($pos, 1060, $pitch);
+	}
+
 }
