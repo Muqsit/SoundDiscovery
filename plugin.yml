@@ -1,0 +1,7 @@
+name: SoundDiscovery
+main: SoundDiscovery\SoundDiscovery
+version: "1.0"
+api: 2.0.0
+commands:
+  sound:
+    description: "Discover new sounds!"
